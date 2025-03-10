@@ -1,0 +1,9 @@
+{
+    "todo-tree.tree.disableCompactFolders": true,
+    "todo-tree.tree.expanded": true,
+    "todo-tree.tree.filterCaseSensitive": true,
+    "todo-tree.tree.flat": true,
+    "todo-tree.tree.groupedBySubTag": true,
+    "todo-tree.tree.groupedByTag": true,
+    "todo-tree.tree.hideIconsWhenGroupedByTag": true
+}

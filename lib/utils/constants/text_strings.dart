@@ -1,5 +1,5 @@
-class GTextS{
-  GTextS._();
+class GText{
+  GText._();
   static const String onBoardingTitle1 = 'Choose Your Product';
   static const String onBoardingTitle2 = 'Select Payment Method';
   static const String onBoardingTitle3 = 'Delivery at your door step';
@@ -29,9 +29,13 @@ class GTextS{
   static const String iAgreeTo = 'I agree to';
   static const String privacyPolicy = 'Privacy Policy';
   static const String termsOfUse = 'Terms of use';
+  static const String and = 'and';
+  static const String gContinue = 'Continue';
+
   static const String verificationCode = 'VerificationCode';
   static const String resendEmail = 'Resend Email';
   static const String resendEmailIn = 'Resend email in';
+
 
   static const String signUpTitle = 'Let\'s create your account';
   static const String forgotPasswordTitle = 'Forgot Password?';

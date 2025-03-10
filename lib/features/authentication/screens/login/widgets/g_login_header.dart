@@ -24,12 +24,12 @@ class GLoginHeader extends StatelessWidget {
         ),
     
         Text(
-          GTextS.loginTitle,
+          GText.loginTitle,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: GSizes.sm),
         Text(
-          GTextS.loginSubtitle,
+          GText.loginSubtitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

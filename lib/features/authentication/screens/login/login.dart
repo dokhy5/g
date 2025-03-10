@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/styles/spacing_styles.dart';
-import 'package:g/common/widgets.login.signup/g_from_divider.dart';
-import 'package:g/common/widgets.login.signup/g_social_buttons.dart';
+import 'package:g/common/widgets/login_signup/g_from_divider.dart';
+import 'package:g/common/widgets/login_signup/g_social_buttons.dart';
 import 'package:g/features/authentication/screens/login/widgets/g_login_from.dart';
 import 'package:g/features/authentication/screens/login/widgets/g_login_header.dart';
 import 'package:g/utils/constants/sizes.dart';
@@ -21,10 +21,15 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               GLoginHeader(),
+
               GLoginFrom(),
-              GFromDivider(dividerText: GTextS.orSignInWith.capitalize!),
+
+              GFromDivider(dividerText: GText.orSignInWith.capitalize!),
+
               const SizedBox(height: GSizes.spaceBtwItems),
+
               GSocialButtons(),
+
             ],
           ),
         ),
