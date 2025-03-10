@@ -4,7 +4,6 @@ import 'package:g/features/authentication/screens/sign_up/verify_email.dart';
 import 'package:g/features/authentication/screens/sign_up/widgets/terms_and_conditition_checkbox.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
-import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -40,6 +39,14 @@ class GSignupFrom extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: GSizes.spaceBtwInputFields),
+           const SizedBox(height: GSizes.spaceBtwInputFields),
+          TextFormField(
+            decoration: const InputDecoration(
+              labelText: GText.username,
+              prefixIcon: Icon(Iconsax.personalcard),
+            ),
           ),
           const SizedBox(height: GSizes.spaceBtwInputFields),
           TextFormField(

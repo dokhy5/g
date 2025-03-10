@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:g/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:g/features/authentication/screens/sign_up/signup.dart';
+import 'package:g/navigation_menu.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
@@ -29,7 +31,7 @@ class GLoginFrom extends StatelessWidget {
             const SizedBox(height: GSizes.spaceBtwInputFields),
             TextFormField(
               decoration: InputDecoration(
-                prefixIcon: const Icon(Iconsax.direct_right),
+                prefixIcon: const Icon(Iconsax.password_check),
                 labelText: GText.password,
                 suffixIcon: Icon(Iconsax.eye_slash),
               ),
@@ -44,14 +46,14 @@ class GLoginFrom extends StatelessWidget {
                     const Text(GText.rememberMe),
                   ],
                 ),
-                TextButton(onPressed: () {}, child: Text(GText.forgotPassword)),
+                TextButton(onPressed: ()=> Get.to(()=> ForgetPassword()), child: Text(GText.forgetPassword,style: TextStyle(color: dark ? GColors.white : GColors.black),)),
               ],
             ),
             const SizedBox(height: GSizes.spaceBtwSections),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(()=> NavigationMenu()),
                 child: Text(GText.signIn),
               ),
             ),

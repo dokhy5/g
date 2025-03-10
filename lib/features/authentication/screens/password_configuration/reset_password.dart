@@ -1,21 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:g/common/widgets/success_screen/success_screen.dart';
 import 'package:g/features/authentication/screens/login/login.dart';
-import 'package:g/utils/constants/colors.dart' show GColors;
+import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = GHelperFunctions.isDarkMode(context);
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -31,7 +30,7 @@ class VerifyEmailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(GSizes.defaultSpace),
+          padding:EdgeInsets.all(GSizes.defaultSpace),
           child: Column(
             children: [
               Image(
@@ -40,20 +39,14 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               const SizedBox(height: GSizes.spaceBtwSections),
               Text(
-                GText.confirmEmail,
+                GText.changePasswordTitle,
                 style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: GSizes.spaceBtwItems),
-              Text(
-                'support@Gomla.com',
-                style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: GSizes.spaceBtwItems),
 
               Text(
-                GText.confirmEmailSubTitle,
+                GText.changePasswordSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
@@ -61,16 +54,8 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed:
-                      () => Get.to(
-                        () => SuccessScreen(
-                          image: GImages.onBoardingImage1,
-                          title: GText.yourAccountIsCreated,
-                          subtTitle: GText.yourAccountIsCreatedSubTitle,
-                          onPressed: () => Get.to(() => LoginScreen()),
-                        ),
-                      ),
-                  child: Text(GText.gContinue),
+                  onPressed: (){},
+                  child: Text(GText.done),
                 ),
               ),
               const SizedBox(height: GSizes.spaceBtwItems),
@@ -81,7 +66,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   child: Text(
                     GText.resendEmail,
                     style: TextStyle(
-                      color: dark ? GColors.white : GColors.black,
+                      color:dark?GColors.white:GColors.black,
                     ),
                   ),
                 ),
