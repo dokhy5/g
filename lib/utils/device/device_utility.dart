@@ -36,7 +36,7 @@ static void hideKeyboard (BuildContext context) {
     return MediaQuery.of(Get.context!).size.height;
   }
 
-  static double getScreenWidth(){
+  static double getScreenWidth(BuildContext context){
     return MediaQuery.of(Get.context!).size.width;
   }
 
