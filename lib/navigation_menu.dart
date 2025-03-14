@@ -1,6 +1,7 @@
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:g/features/shop/screen/home/home.dart';
+import 'package:g/features/shop/screen/store/store.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -40,7 +41,7 @@ class NavigationController extends GetxController {
   final RxInt selectedIndex = 0.obs;
   final List<Widget> screens = [
     const HomeScreen(),
-    Container(color: Colors.blue),
+    const StoreScreen(),
     Container(color: Colors.red),
     Container(color: Colors.green),
   ];

@@ -4,10 +4,10 @@ import 'package:iconsax/iconsax.dart';
 
 class GCartCounterIcon extends StatelessWidget {
   const GCartCounterIcon({
-    super.key, required this.onPressed,required this.iconColor, 
+    super.key, required this.onPressed, this.iconColor, 
   });
   final VoidCallback onPressed;
-final Color iconColor;
+final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
