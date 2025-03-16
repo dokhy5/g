@@ -12,6 +12,7 @@ class GImages{
   static const String arialBanner = 'assets/images/banners/arial_banner.jpg';
   static const String oxyProduct1 = 'assets/images/products/oxy_product.jpg';
   static const String oxyProduct2 = 'assets/images/products/oxy_product2.png';
+  static const String user = 'assets/images/users/profile.png';
 
 
 } 

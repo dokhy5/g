@@ -33,6 +33,7 @@ class GText{
   static const String gContinue = 'Continue';
   static const String submit = 'Submit';
   static const String done = 'Done';
+  static const String logout = 'Logout';
 
   static const String verificationCode = 'VerificationCode';
   static const String resendEmail = 'Resend Email';

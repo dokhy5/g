@@ -27,10 +27,10 @@ class GCircularIcon extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color:
-            backgroundColor ?? (dark
-                ? GColors.black.withOpacity(.9)
-                : GColors.white.withOpacity(.9)),
+        // color:
+        //     backgroundColor ?? (dark
+        //         ? GColors.black.withOpacity(.9)
+        //         : GColors.white.withOpacity(.9)),
       ),
       child: IconButton(onPressed: onPressed, icon: Icon(icon, color: color)),
     );

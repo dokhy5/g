@@ -1,7 +1,9 @@
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:g/features/shop/screen/home/home.dart';
-import 'package:g/features/shop/screen/store/store.dart';
+import 'package:g/features/presonalization/screens/settings/settings.dart';
+import 'package:g/features/shop/screens/home/home.dart';
+import 'package:g/features/shop/screens/store/store.dart';
+import 'package:g/features/shop/screens/wishlist/wishlist.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -42,7 +44,7 @@ class NavigationController extends GetxController {
   final List<Widget> screens = [
     const HomeScreen(),
     const StoreScreen(),
-    Container(color: Colors.red),
-    Container(color: Colors.green),
+    const WishlistScreen(),
+    const SettingsScreen(),
   ];
 }

@@ -8,9 +8,9 @@ import 'package:g/common/widgets/images/rounded_image.dart';
 import 'package:g/common/widgets/loyouts/grid_loyout.dart';
 import 'package:g/common/widgets/products/pruduct_cards/pruduct_card_vertical.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
-import 'package:g/features/shop/screen/home/widgets/home_appbar.dart';
-import 'package:g/features/shop/screen/home/widgets/home_categories.dart';
-import 'package:g/features/shop/screen/home/widgets/promo_slider.dart';
+import 'package:g/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:g/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:g/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
@@ -33,27 +33,27 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: GSizes.spaceBtwSections),
                   GSearchContainer(text: 'ابحث عن المنتجات'),
                   const SizedBox(height: GSizes.spaceBtwSections),
-                  Padding(
-                    padding: EdgeInsets.all(GSizes.defaultSpace),
-                    child: Directionality(
-                      textDirection:
-                          TextDirection
-                              .rtl, // يجعل التخطيط من اليمين إلى اليسار
-                      child: Column(
-                        crossAxisAlignment:
-                            CrossAxisAlignment.start, // تأكيد الترتيب الصحيح
-                        children: [
-                          GSectionHeading(
-                            title: 'الفئات الاكثر شعبية',
-                            showActionButton: false,
-                            textColor: GColors.white,
-                            textAlign:
-                                TextAlign.right, // يضمن محاذاة النص إلى اليمين
-                          ),
-                          const SizedBox(height: GSizes.spaceBtwItems),
-                          GHomeCategories(),
-                        ],
-                      ),
+                  Directionality(
+                    textDirection:
+                        TextDirection
+                            .rtl, // يجعل التخطيط من اليمين إلى اليسار
+                    child: Column(
+                      crossAxisAlignment:
+                          CrossAxisAlignment.start, // تأكيد الترتيب الصحيح
+                      children: [
+                        GSectionHeading(
+                          padding: EdgeInsets.all(GSizes.defaultSpace),
+                          title: 'الفئات الاكثر شعبية',
+                          showActionButton: false,
+                          textColor: GColors.white,
+                          textAlign:
+                              TextAlign.right, 
+                              
+                        ),
+                        const SizedBox(height: GSizes.spaceBtwItems),
+                        GHomeCategories(),
+                        SizedBox(height: GSizes.spaceBtwSections),
+                      ],
                     ),
                   ),
                 ],
