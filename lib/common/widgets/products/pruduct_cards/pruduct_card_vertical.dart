@@ -7,7 +7,6 @@ import 'package:g/common/widgets/text/brand_title_text_with_verified_icon.dart';
 import 'package:g/common/widgets/text/product_price_text.dart';
 import 'package:g/common/widgets/text/product_title_text.dart';
 import 'package:g/utils/constants/colors.dart';
-import 'package:g/utils/constants/enums.dart';
 import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/helpers/helper_functions.dart';

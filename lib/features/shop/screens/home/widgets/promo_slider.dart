@@ -4,7 +4,6 @@ import 'package:g/common/widgets/custom_shapes/container/circular_container.dart
 import 'package:g/common/widgets/images/rounded_image.dart';
 import 'package:g/features/shop/controllers/home_controller.dart';
 import 'package:g/utils/constants/colors.dart';
-import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 

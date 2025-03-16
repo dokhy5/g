@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class NavigationMenu extends StatelessWidget {
-  NavigationMenu({super.key});
+  const NavigationMenu({super.key});
 
   
 

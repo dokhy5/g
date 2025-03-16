@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:g/features/authentication/screens/password_configuration/reset_password.dart';
-import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
 import 'package:get/get.dart';

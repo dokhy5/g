@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/custom_shapes/container/primary_header_container.dart';
-import 'package:g/common/widgets/images/circular_image.dart';
 import 'package:g/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:g/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:g/common/widgets/text/section_heading.dart';

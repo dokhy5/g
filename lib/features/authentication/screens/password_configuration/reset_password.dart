@@ -7,7 +7,6 @@ import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});

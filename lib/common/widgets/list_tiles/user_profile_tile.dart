@@ -36,7 +36,7 @@ class GUserProfileTile extends StatelessWidget {
       ),
       trailing: IconButton(
         icon: const Icon(Iconsax.edit, color: Colors.white),
-        onPressed: () {},
+        onPressed: onPressed,
       ),
     );
   }

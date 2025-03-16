@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:g/features/authentication/screens/sign_up/signup.dart';
 import 'package:g/features/authentication/screens/sign_up/verify_email.dart';
 import 'package:g/features/authentication/screens/sign_up/widgets/terms_and_conditition_checkbox.dart';
 import 'package:g/utils/constants/sizes.dart';

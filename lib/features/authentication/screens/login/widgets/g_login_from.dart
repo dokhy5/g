@@ -6,7 +6,6 @@ import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
-import 'package:g/utils/themes/custom_themes/outlined_button_theme.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

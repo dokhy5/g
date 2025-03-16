@@ -8,7 +8,6 @@ import 'package:g/common/widgets/brands/brand_card.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
 import 'package:g/features/shop/screens/store/widgets/category_tap.dart';
 import 'package:g/utils/constants/sizes.dart';
-import 'package:g/utils/helpers/helper_functions.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
