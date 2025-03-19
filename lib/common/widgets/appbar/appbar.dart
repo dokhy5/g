@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/device/device_utility.dart';
+import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -20,24 +22,28 @@ class GAppbar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: GSizes.md),
-      child: AppBar(
-        automaticallyImplyLeading: false,
-        leading:
-            showBackArrow
-                ? IconButton(
-                  onPressed: () => Get.back(),
-                  icon: Icon(Iconsax.arrow_left),
-                )
-                : leadingIcon != null
-                ? IconButton(
-                  onPressed: leadingOnPressed,
-                  icon: Icon(leadingIcon),
-                )
-                : null,
-        title: title,
-        actions: actions,
+    final dark = GHelperFunctions.isDarkMode(context);
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: GSizes.md),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          leading:
+              showBackArrow
+                  ? IconButton(
+                    onPressed: () => Get.back(),
+                    icon: Icon(Iconsax.arrow_right_3,color: dark?GColors.white:GColors.black,size: GSizes.iconMd,),
+                  )
+                  : leadingIcon != null
+                  ? IconButton(
+                    onPressed: leadingOnPressed,
+                    icon: Icon(leadingIcon),
+                  )
+                  : null,
+          title: title,
+          actions: actions,
+        ),
       ),
     );
   }

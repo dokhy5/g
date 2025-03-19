@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/login_signup/g_from_divider.dart';
 import 'package:g/common/widgets/login_signup/g_social_buttons.dart';
 import 'package:g/features/authentication/screens/sign_up/widgets/signup_from.dart';
@@ -12,8 +13,8 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme:Theme.of(context).iconTheme,
+      appBar: GAppbar(
+       showBackArrow: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

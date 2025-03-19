@@ -4,7 +4,9 @@ import 'package:g/common/widgets/custom_shapes/container/primary_header_containe
 import 'package:g/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:g/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
+import 'package:g/features/presonalization/screens/address/address.dart';
 import 'package:g/features/presonalization/screens/profile/profile.dart';
+import 'package:g/features/shop/screens/cart/cart.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
@@ -50,11 +52,13 @@ class SettingsScreen extends StatelessWidget {
                   title: 'My Address',
                   subtitle: 'Set shopping delivery address',
                   icon: Iconsax.safe_home,
+                  onTap: ()=>Get.to(()=>AddressScreen()),
                 ),
                 GSettingsMenuTile(
                   title: 'My Cart',
                   subtitle: 'Add, remove products and move checkout',
                   icon: Iconsax.shopping_cart,
+                  onTap: ()=>Get.to(()=>CartScreen()),
                 ),
                 GSettingsMenuTile(
                   title: 'My Orders',

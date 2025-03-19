@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GProductPriceText extends StatelessWidget {
   const GProductPriceText({
     super.key,
-    this.currencySign =  'ج.م' ,
+    this.currencySign =  'جم' ,
     required this.price,
      this.maxLine=1,
     this.isLarge = false,
@@ -21,10 +21,10 @@ class GProductPriceText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       style:
           isLarge
-              ? Theme.of(context).textTheme.headlineLarge!.apply(
+              ? Theme.of(context).textTheme.headlineMedium!.apply(
                 decoration: lineThrough ? TextDecoration.lineThrough : null,
               )
-              : Theme.of(context).textTheme.headlineSmall!.apply(
+              : Theme.of(context).textTheme.titleLarge!.apply(
                 decoration: lineThrough ? TextDecoration.lineThrough : null,
               ),
     );

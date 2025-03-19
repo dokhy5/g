@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:g/features/shop/screens/cart/cart.dart';
 import 'package:g/utils/constants/colors.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GCartCounterIcon extends StatelessWidget {
@@ -12,7 +14,7 @@ final Color? iconColor;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-    IconButton(onPressed: onPressed, icon: Icon(Iconsax.shopping_bag,color:iconColor,)),
+    IconButton(onPressed: ()=> Get.to(()=>CartScreen()), icon: Icon(Iconsax.shopping_bag,color:iconColor,)),
     Positioned(right: 0,child:Container(
       width: 18,
       height: 18,

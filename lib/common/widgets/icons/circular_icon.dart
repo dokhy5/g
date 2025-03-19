@@ -20,18 +20,17 @@ class GCircularIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = GHelperFunctions.isDarkMode(context);
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        // color:
-        //     backgroundColor ?? (dark
-        //         ? GColors.black.withOpacity(.9)
-        //         : GColors.white.withOpacity(.9)),
+        color:
+            backgroundColor ,
       ),
-      child: IconButton(onPressed: onPressed, icon: Icon(icon, color: color)),
+      child: IconButton(onPressed: onPressed, icon: Icon(icon, color: color),
+      padding: EdgeInsets.zero,
+      ),
     );
   }
 }
