@@ -7,6 +7,7 @@ import 'package:g/common/widgets/text/section_heading.dart';
 import 'package:g/features/presonalization/screens/address/address.dart';
 import 'package:g/features/presonalization/screens/profile/profile.dart';
 import 'package:g/features/shop/screens/cart/cart.dart';
+import 'package:g/features/shop/screens/order/order.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/constants/text_strings.dart';
@@ -67,6 +68,7 @@ class SettingsScreen extends StatelessWidget {
                     title: 'طلباتي',
                     subtitle: 'الطلبات الجارية والمكتملة',
                     icon: Iconsax.bag_tick,
+                    onTap: ()=>Get.to(()=>OrderScreen()),
                   ),
                   GSettingsMenuTile(
                     title: 'الحساب البنكي',
