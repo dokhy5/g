@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
-import 'package:g/common/widgets/icons/circular_icon.dart';
-import 'package:g/common/widgets/images/rounded_image.dart';
-import 'package:g/common/widgets/text/brand_title_text_with_verified_icon.dart';
+import 'package:g/common/widgets/products/cart/cart_item.dart';
+import 'package:g/common/widgets/products/cart/product_quantity_with_add_remove_button.dart';
 import 'package:g/common/widgets/text/product_price_text.dart';
-import 'package:g/common/widgets/text/product_title_text.dart';
-import 'package:g/utils/constants/colors.dart';
-import 'package:g/utils/constants/image_strings.dart';
+import 'package:g/features/shop/screens/cart/widgets/cart_items.dart';
+import 'package:g/features/shop/screens/checkout/checkout.dart';
 import 'package:g/utils/constants/sizes.dart';
-import 'package:g/utils/helpers/helper_functions.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
+
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
@@ -27,103 +25,16 @@ class CartScreen extends StatelessWidget {
         ),
         body: Padding(
           padding: EdgeInsets.all(GSizes.defaultSpace),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  separatorBuilder: (_, __) => const SizedBox(height: GSizes.spaceBtwItems),
-                  itemCount: 5,
-                  itemBuilder: (_, index) => Column(
-                    children: [
-                      GCartItem(),
-                      SizedBox(height: GSizes.spaceBtwItems),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GProductPriceText(price: '75.0'), 
-                          GProductQuantityWithAddRemoveButton(),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: GCartItems(),
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(GSizes.defaultSpace),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: ()=>Get.to(()=>CheckoutScreen()),
             child: Text('إتمام الشراء 75.0 جم'),
           ),
         ),
       ),
-    );
-  }
-}
-
-class GProductQuantityWithAddRemoveButton extends StatelessWidget {
-  const GProductQuantityWithAddRemoveButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final dark = GHelperFunctions.isDarkMode(context);
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      textDirection: TextDirection.rtl, // جعل الأزرار تتبع RTL
-      children: [
-        GCircularIcon(
-          icon: Iconsax.add,
-          width: 32,
-          height: 32,
-          size: GSizes.md,
-          color: GColors.white,
-          backgroundColor: GColors.primary,
-        ),
-        SizedBox(width: GSizes.spaceBtwItems),
-        Text('2', style: Theme.of(context).textTheme.titleSmall),
-        SizedBox(width: GSizes.spaceBtwItems),
-        GCircularIcon(
-          icon: Iconsax.minus,
-          width: 32,
-          height: 32,
-          size: GSizes.md,
-          color: dark ? GColors.white : GColors.black,
-          backgroundColor: dark ? GColors.darkGrey : GColors.white,
-        ),
-      ],
-    );
-  }
-}
-
-class GCartItem extends StatelessWidget {
-  const GCartItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final dark = GHelperFunctions.isDarkMode(context);
-    return Row(
-      textDirection: TextDirection.rtl, // جعل العناصر تبدأ من اليمين
-      children: [
-        GRoundedImage(
-          imageUrl: GImages.oxyProduct2,
-          height: 60,
-          width: 60,
-          padding: const EdgeInsets.all(GSizes.sm),
-          backgroundColor: dark ? GColors.darkerGrey : GColors.light,
-        ),
-        const SizedBox(width: GSizes.spaceBtwItems),
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // محاذاة النصوص لليمين
-            children: [
-              GBrandTitleTextWithVerifiedIcon(title: 'أوكسي'),
-              const GProductTitleText(title: '2.5k أوكسي بالمندرين'),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

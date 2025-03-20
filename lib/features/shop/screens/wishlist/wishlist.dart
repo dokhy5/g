@@ -13,23 +13,35 @@ class WishlistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: GAppbar(
-        title: Text('Wishlist',style: Theme.of(context).textTheme.headlineMedium,),
-        actions: [
-          GCircularIcon(icon: Iconsax.add, onPressed: () => Get.to( HomeScreen())),
-        ],
-
-      ),
-      body: SingleChildScrollView(
-        child: Padding(padding: const EdgeInsets.all(GSizes.defaultSpace), child:Column(
-          children: [
-            GGridLoyout(itemCount: 5, itemBuilder: (_, index) => const GProductCardVertical(),),
-
+    return Directionality(
+      textDirection: TextDirection.rtl, // ضبط الاتجاه من اليمين إلى اليسار
+      child: Scaffold(
+        appBar: GAppbar(
+          title: Text(
+            'المفضلة', // تغيير العنوان إلى العربية
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          actions: [
+            GCircularIcon(
+              icon: Iconsax.add,
+              onPressed: () => Get.to(HomeScreen()),
+            ),
           ],
-        )),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(GSizes.defaultSpace),
+            child: Column(
+              children: [
+                GGridLoyout(
+                  itemCount: 5,
+                  itemBuilder: (_, index) => const GProductCardVertical(),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
-
     );
   }
 }

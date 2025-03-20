@@ -14,7 +14,7 @@ class GCartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = GHelperFunctions.isDarkMode(context);
     return Row(
-      textDirection: TextDirection.rtl, // جعل العناصر تبدأ من اليمين
+      textDirection: TextDirection.rtl, 
       children: [
         GRoundedImage(
           imageUrl: GImages.oxyProduct2,
@@ -24,12 +24,13 @@ class GCartItem extends StatelessWidget {
           backgroundColor: dark ? GColors.darkerGrey : GColors.light,
         ),
         const SizedBox(width: GSizes.spaceBtwItems),
-        Flexible(
+        Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // محاذاة النصوص لليمين
+            mainAxisSize: MainAxisSize.min, 
+            crossAxisAlignment: CrossAxisAlignment.start, 
             children: [
               GBrandTitleTextWithVerifiedIcon(title: 'أوكسي'),
-              const GProductTitleText(title: '2.5k أوكسي بالمندرين'),
+              Flexible(child:  GProductTitleText(title: 'أوكسي بالمندرين 2.5k')),
             ],
           ),
         ),

@@ -13,7 +13,7 @@ class GProductQuantityWithAddRemoveButton extends StatelessWidget {
     final dark = GHelperFunctions.isDarkMode(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
-      textDirection: TextDirection.rtl, // جعل الأزرار تتبع RTL
+      textDirection: TextDirection.rtl, 
       children: [
         GCircularIcon(
           icon: Iconsax.add,

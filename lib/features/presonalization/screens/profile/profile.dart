@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = GHelperFunctions.isDarkMode(context);
     return Directionality(
-      textDirection: TextDirection.rtl, // ضبط الاتجاه إلى اليمين
+      textDirection: TextDirection.rtl, // تغيير الاتجاه إلى اليمين
       child: Scaffold(
         appBar: GAppbar(title: Text('الملف الشخصي'), showBackArrow: true),
         body: SingleChildScrollView(

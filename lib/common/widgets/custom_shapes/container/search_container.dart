@@ -41,11 +41,11 @@ class GSearchContainer extends StatelessWidget {
                   : null,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(text, style: Theme.of(context).textTheme.bodySmall),
-            const SizedBox(width: GSizes.spaceBtwItems),
             Icon(icon, color: dark ? GColors.grey : GColors.darkerGrey),
+            const SizedBox(width: GSizes.spaceBtwItems),
+            Text(text, style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
       ),

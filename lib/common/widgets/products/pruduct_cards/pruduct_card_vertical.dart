@@ -81,7 +81,7 @@ class GProductCardVertical extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(right: GSizes.sm),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GProductTitleText(
                     title: '2.5kاوكسي بالمندرين',
@@ -98,6 +98,10 @@ class GProductCardVertical extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: GSizes.sm),
+                        child: GProductPriceText(price: '75.0',),
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: GColors.primary,
@@ -118,10 +122,7 @@ class GProductCardVertical extends StatelessWidget {
                             ),
                           ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: GSizes.sm),
-                        child: GProductPriceText(price: '75.0',),
-                      )
+                      
                     ],
                   ),
           ],

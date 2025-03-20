@@ -20,118 +20,121 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = GHelperFunctions.isDarkMode(context);
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          GPrimaryHeaderContainer(
-            child: Column(
-              children: [
-                GAppbar(
-                  title: Text(
-                    'Account',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.headlineMedium!.apply(color: GColors.white),
+    return Directionality(
+      textDirection: TextDirection.rtl, // تحويل الاتجاه إلى اليمين
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            GPrimaryHeaderContainer(
+              child: Column(
+                children: [
+                  GAppbar(
+                    title: Text(
+                      'الحساب',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .apply(color: GColors.white),
+                    ),
                   ),
-                ),
-                GUserProfileTile(onPressed: ()=>Get.to(()=>ProfileScreen())),
-                SizedBox(height: GSizes.spaceBtwSections),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(GSizes.defaultSpace),
-            child: Column(
-              children: [
-                GSectionHeading(
-                  title: 'Account Settings',
-                  showActionButton: false,
-                ),
-                SizedBox(height: GSizes.spaceBtwItems),
-                GSettingsMenuTile(
-                  title: 'My Address',
-                  subtitle: 'Set shopping delivery address',
-                  icon: Iconsax.safe_home,
-                  onTap: ()=>Get.to(()=>AddressScreen()),
-                ),
-                GSettingsMenuTile(
-                  title: 'My Cart',
-                  subtitle: 'Add, remove products and move checkout',
-                  icon: Iconsax.shopping_cart,
-                  onTap: ()=>Get.to(()=>CartScreen()),
-                ),
-                GSettingsMenuTile(
-                  title: 'My Orders',
-                  subtitle: 'In-progress and completed orders',
-                  icon: Iconsax.bag_tick,
-                ),
-                GSettingsMenuTile(
-                  title: 'Bank Acount',
-                  subtitle: 'Withdraw balance to registered bank account',
-                  icon: Iconsax.bank,
-                ),
-                GSettingsMenuTile(
-                  title: 'My Coupons',
-                  subtitle: 'List of all discounted coupons',
-                  icon: Iconsax.discount_shape,
-                ),
-                GSettingsMenuTile(
-                  title: 'Netfications',
-                  subtitle: 'Set any kind of notification message',
-                  icon: Iconsax.notification,
-                ),
-                GSettingsMenuTile(
-                  title: 'Account Privacy',
-                  subtitle: 'Mange data usage and connected accounts',
-                  icon: Iconsax.security_card,
-                ),
-                SizedBox(height: GSizes.spaceBtwSections),
-                GSectionHeading(title: 'App Settings', showActionButton: false),
-                SizedBox(height: GSizes.spaceBtwItems),
-                GSettingsMenuTile(
-                  title: 'Load Data',
-                  subtitle: 'Upload  data to the your cloud firebase',
-                  icon: Iconsax.document_upload,
-                ),
-                GSettingsMenuTile(
-                  title: 'GeoLocation',
-                  subtitle: 'set Recommendations based on location',
-                  icon: Iconsax.location,
-                  trailing: Switch(value: false, onChanged: ((value) {})),
-                ),
-                 GSettingsMenuTile(
-                  title: 'Safe Mode',
-                  subtitle: 'Search Results is Safe for all ages',
-                  icon: Iconsax.security_user,
-                  trailing: Switch(value: false, onChanged: ((value) {})),
-                ),
-                 GSettingsMenuTile(
-                  title: 'HD Images Quality',
-                  subtitle: 'Set image quality to be seen',
-                  icon: Iconsax.image,
-                  trailing: Switch(value: false, onChanged: ((value) {})),
-                ),
-                SizedBox(height: GSizes.spaceBtwSections),
-                SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.transparent, // No background color
-                  side: BorderSide(color: dark ? GColors.white : GColors.black),
-                ),
-                onPressed: () {},
-                child: Text(
-                  GText.logout,
-                  style: TextStyle(color: dark ? GColors.white : GColors.black),
-                ),
+                  GUserProfileTile(onPressed: () => Get.to(() => ProfileScreen())),
+                  SizedBox(height: GSizes.spaceBtwSections),
+                ],
               ),
             ),
-            SizedBox(height: GSizes.spaceBtwSections*2.5),
-
-              ],
+            Padding(
+              padding: EdgeInsets.all(GSizes.defaultSpace),
+              child: Column(
+                children: [
+                  GSectionHeading(
+                    title: 'إعدادات الحساب',
+                    showActionButton: false,
+                  ),
+                  SizedBox(height: GSizes.spaceBtwItems),
+                  GSettingsMenuTile(
+                    title: 'عنواني',
+                    subtitle: 'تحديد عنوان التوصيل الخاص بك',
+                    icon: Iconsax.safe_home,
+                    onTap: () => Get.to(() => AddressScreen()),
+                  ),
+                  GSettingsMenuTile(
+                    title: 'عربة التسوق',
+                    subtitle: 'إضافة أو إزالة المنتجات وإتمام الدفع',
+                    icon: Iconsax.shopping_cart,
+                    onTap: () => Get.to(() => CartScreen()),
+                  ),
+                  GSettingsMenuTile(
+                    title: 'طلباتي',
+                    subtitle: 'الطلبات الجارية والمكتملة',
+                    icon: Iconsax.bag_tick,
+                  ),
+                  GSettingsMenuTile(
+                    title: 'الحساب البنكي',
+                    subtitle: 'سحب الرصيد إلى الحساب البنكي المسجل',
+                    icon: Iconsax.bank,
+                  ),
+                  GSettingsMenuTile(
+                    title: 'كوبوناتي',
+                    subtitle: 'قائمة بجميع القسائم المخفضة',
+                    icon: Iconsax.discount_shape,
+                  ),
+                  GSettingsMenuTile(
+                    title: 'الإشعارات',
+                    subtitle: 'تعيين إشعارات التنبيهات المختلفة',
+                    icon: Iconsax.notification,
+                  ),
+                  GSettingsMenuTile(
+                    title: 'خصوصية الحساب',
+                    subtitle: 'إدارة استخدام البيانات والحسابات المتصلة',
+                    icon: Iconsax.security_card,
+                  ),
+                  SizedBox(height: GSizes.spaceBtwSections),
+                  GSectionHeading(title: 'إعدادات التطبيق', showActionButton: false),
+                  SizedBox(height: GSizes.spaceBtwItems),
+                  GSettingsMenuTile(
+                    title: 'تحميل البيانات',
+                    subtitle: 'رفع البيانات إلى سحابة Firebase',
+                    icon: Iconsax.document_upload,
+                  ),
+                  GSettingsMenuTile(
+                    title: 'الموقع الجغرافي',
+                    subtitle: 'تقديم اقتراحات حسب الموقع',
+                    icon: Iconsax.location,
+                    trailing: Switch(value: false, onChanged: ((value) {})),
+                  ),
+                  GSettingsMenuTile(
+                    title: 'الوضع الآمن',
+                    subtitle: 'نتائج البحث آمنة لجميع الأعمار',
+                    icon: Iconsax.security_user,
+                    trailing: Switch(value: false, onChanged: ((value) {})),
+                  ),
+                  GSettingsMenuTile(
+                    title: 'جودة الصور',
+                    subtitle: 'تحديد جودة الصور المعروضة',
+                    icon: Iconsax.image,
+                    trailing: Switch(value: false, onChanged: ((value) {})),
+                  ),
+                  SizedBox(height: GSizes.spaceBtwSections),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        side: BorderSide(color: dark ? GColors.white : GColors.black),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        GText.logout,
+                        style: TextStyle(color: dark ? GColors.white : GColors.black),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: GSizes.spaceBtwSections * 2.5),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -17,68 +17,64 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            GPrimaryHeaderContainer(
-              child: Column(
-                children: [
-                  const GHomeAppbar(),
-                  const SizedBox(height: GSizes.spaceBtwSections),
-                  GSearchContainer(text: 'ابحث عن المنتجات'),
-                  const SizedBox(height: GSizes.spaceBtwSections),
-                  Directionality(
-                    textDirection:
-                        TextDirection
-                            .rtl, // يجعل التخطيط من اليمين إلى اليسار
-                    child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start, // تأكيد الترتيب الصحيح
+      body: Directionality(
+        textDirection: TextDirection.rtl, // جعل التخطيط بالكامل من اليمين إلى اليسار
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GPrimaryHeaderContainer(
+                child: Column(
+                  children: [
+                    const GHomeAppbar(),
+                    const SizedBox(height: GSizes.spaceBtwSections),
+                    GSearchContainer(text: 'ابحث عن المنتجات'),
+                    const SizedBox(height: GSizes.spaceBtwSections),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         GSectionHeading(
                           padding: EdgeInsets.all(GSizes.defaultSpace),
                           title: 'الفئات الاكثر شعبية',
                           showActionButton: false,
                           textColor: GColors.white,
-                          textAlign:
-                              TextAlign.right, 
-                              
+                          textAlign: TextAlign.right, 
                         ),
                         const SizedBox(height: GSizes.spaceBtwItems),
                         GHomeCategories(),
                         SizedBox(height: GSizes.spaceBtwSections),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(GSizes.defaultSpace),
-              child: Column(
-                children: [
-                  GPromoSlider(
-                    banners: [
-                      GImages.oxyBanner2,
-                      GImages.arialBanner,
-                      GImages.oxyBanner2,
-                    ],
-                  ),
-                  SizedBox(height: GSizes.spaceBtwSections),
-                  GSectionHeading(
-                    title: 'المنتجات الاكثر شعبية',
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: GSizes.spaceBtwItems),
-                  GGridLoyout(
-                    itemCount: 4,
-                    itemBuilder: (_, index) => GProductCardVertical(),
-                  ),
-                  SizedBox(height: GSizes.spaceBtwSections),
-                ],
+              Padding(
+                padding: EdgeInsets.all(GSizes.defaultSpace),
+                child: Column(
+                  children: [
+                    GPromoSlider(
+                      banners: [
+                        GImages.oxyBanner2,
+                        GImages.arialBanner,
+                        GImages.oxyBanner2,
+                      ],
+                    ),
+                    SizedBox(height: GSizes.spaceBtwSections),
+                    GSectionHeading(
+                      title: 'المنتجات الاكثر شعبية',
+                      onPressed: () {},
+                      textAlign: TextAlign.right,
+                    ),
+                    const SizedBox(height: GSizes.spaceBtwItems),
+                    GGridLoyout(
+                      itemCount: 4,
+                      itemBuilder: (_, index) => GProductCardVertical(),
+                    ),
+                    SizedBox(height: GSizes.spaceBtwSections),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

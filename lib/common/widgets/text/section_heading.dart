@@ -26,8 +26,7 @@ class GSectionHeading extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (showActionButton)
-            TextButton(onPressed: () {}, child: Text(buttonTitle,style:TextStyle(color: dark ? GColors.white : GColors.black),)),
+          
           Text(
       
             title,
@@ -36,7 +35,14 @@ class GSectionHeading extends StatelessWidget {
             textAlign: textAlign,
             overflow: TextOverflow.ellipsis,
           ),
-          
+          if (showActionButton)
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                buttonTitle,
+                style: TextStyle(color: dark ? GColors.white : GColors.black),
+              ),
+            ),
         ],
       ),
     );

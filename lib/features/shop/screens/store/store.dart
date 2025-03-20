@@ -11,61 +11,62 @@ import 'package:g/utils/constants/sizes.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 9,
-      child: Scaffold(
-        appBar: GAppbar(
-          title: Text(
-            'Store',
-            style: Theme.of(context).textTheme.headlineMedium,
+    return Directionality(
+      textDirection: TextDirection.rtl, // تعيين الاتجاه من اليمين إلى اليسار
+      child: DefaultTabController(
+        length: 9,
+        child: Scaffold(
+          appBar: GAppbar(
+            title: Text(
+              'المتجر',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            actions: [GCartCounterIcon(onPressed: () {})],
           ),
-          actions: [GCartCounterIcon(onPressed: () {})],
-        ),
-        body: NestedScrollView(
-          headerSliverBuilder: (_, innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                pinned: true,
-                floating: true,
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                expandedHeight: 440,
-                flexibleSpace: Padding(
-                  padding: const EdgeInsets.all(GSizes.defaultSpace),
-                  child: SingleChildScrollView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: GSizes.spaceBtwItems),
-                        const GSearchContainer(
-                          text: 'ابحث عن المنتجات',
-                          showBorder: true,
-                          showBackground: false,
-                          padding: EdgeInsets.zero,
-                        ),
-                        const SizedBox(height: GSizes.spaceBtwSections),
-                        GSectionHeading(
-                          title: 'العلامات التجاريه المميزة',
-                          showActionButton: true,
-                          onPressed: () {},
-                        ),
-                        const SizedBox(height: GSizes.spaceBtwItems / 1.5),
-                        GGridLoyout(
-                          itemCount: 4,
-                          mainAxisExtent: 80,
-                          itemBuilder:
-                              (_, index) => GBrandCard(showBorder: true),
-                        ),
-                      ],
+          body: NestedScrollView(
+            headerSliverBuilder: (_, innerBoxIsScrolled) {
+              return [
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  pinned: true,
+                  floating: true,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  expandedHeight: 440,
+                  flexibleSpace: Padding(
+                    padding: const EdgeInsets.all(GSizes.defaultSpace),
+                    child: SingleChildScrollView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: GSizes.spaceBtwItems),
+                          const GSearchContainer(
+                            text: 'ابحث عن المنتجات',
+                            showBorder: true,
+                            showBackground: false,
+                            padding: EdgeInsets.zero,
+                          ),
+                          const SizedBox(height: GSizes.spaceBtwSections),
+                          GSectionHeading(
+                            title: 'العلامات التجارية المميزة',
+                            showActionButton: true,
+                            onPressed: () {},
+                          ),
+                          const SizedBox(height: GSizes.spaceBtwItems / 1.5),
+                          GGridLoyout(
+                            itemCount: 4,
+                            mainAxisExtent: 80,
+                            itemBuilder: (_, index) =>
+                                GBrandCard(showBorder: true),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(50),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
+                  bottom: PreferredSize(
+                    preferredSize: const Size.fromHeight(50),
                     child: GTopbar(
                       tabs: const [
                         Tab(child: Text('مساحيق')),
@@ -81,21 +82,11 @@ class StoreScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ];
-          },
-          body: TabBarView(
-            children: [
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-              GCategoryTap(),
-            ],
+              ];
+            },
+            body: TabBarView(
+              children: List.generate(9, (_) => GCategoryTap()),
+            ),
           ),
         ),
       ),

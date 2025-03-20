@@ -1,4 +1,3 @@
-import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:g/features/presonalization/screens/settings/settings.dart';
 import 'package:g/features/shop/screens/home/home.dart';
@@ -11,34 +10,35 @@ import 'package:iconsax/iconsax.dart';
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
-  
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
     final dark = GHelperFunctions.isDarkMode(context);
 
-    return Scaffold(
-      body: Obx(() => controller.screens[controller.selectedIndex.value]),
+    return Directionality(
+      textDirection: TextDirection.rtl, // جعل الاتجاه من اليمين إلى اليسار
+      child: Scaffold(
+        body: Obx(() => controller.screens[controller.selectedIndex.value]),
 
-      bottomNavigationBar: Obx(() => NavigationBar(
-        height: 60,
-        elevation: 0,
-        backgroundColor: dark ? Colors.black : Colors.white,
-        indicatorColor: dark ? Colors.white.withOpacity(.1) : Colors.black.withOpacity(.1),
-        selectedIndex: controller.selectedIndex.value,
-        onDestinationSelected: (int index) => controller.selectedIndex.value = index,
-        destinations: [
-          NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
-          NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
-          NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
-        ],
-      )),
+        bottomNavigationBar: Obx(() => NavigationBar(
+          height: 60,
+          elevation: 0,
+          backgroundColor: dark ? Colors.black : Colors.white,
+          indicatorColor: dark ? Colors.white.withOpacity(.1) : Colors.black.withOpacity(.1),
+          selectedIndex: controller.selectedIndex.value,
+          onDestinationSelected: (int index) => controller.selectedIndex.value = index,
+          destinations: [
+            NavigationDestination(icon: Icon(Iconsax.home), label: 'الرئيسية'),
+            NavigationDestination(icon: Icon(Iconsax.shop), label: 'المتجر'),
+            NavigationDestination(icon: Icon(Iconsax.heart), label: 'المفضلة'),
+            NavigationDestination(icon: Icon(Iconsax.user), label: 'الملف الشخصي'),
+          ],
+        )),
+      ),
     );
   }
 }
-          
+
 class NavigationController extends GetxController {
   final RxInt selectedIndex = 0.obs;
   final List<Widget> screens = [
