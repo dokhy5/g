@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:g/features/shop/screens/all_products/all_products.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 
 class GSectionHeading extends StatelessWidget {
   const GSectionHeading({
@@ -37,7 +39,7 @@ class GSectionHeading extends StatelessWidget {
           ),
           if (showActionButton)
             TextButton(
-              onPressed: () {},
+              onPressed: () =>Get.to(()=>AllProductsScreen()),
               child: Text(
                 buttonTitle,
                 style: TextStyle(color: dark ? GColors.white : GColors.black),
