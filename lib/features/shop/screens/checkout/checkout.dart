@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/custom_shapes/container/rounded_container.dart';
 import 'package:g/common/widgets/success_screen/success_screen.dart';
-import 'package:g/common/widgets/text/section_heading.dart';
 import 'package:g/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:g/features/shop/screens/checkout/billing_payment_section.dart';
 import 'package:g/features/shop/screens/checkout/widget/billing_address_section.dart';
@@ -13,7 +12,6 @@ import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/image_text_widgets/vertical_image_text.dart';
+import 'package:g/features/shop/screens/sub_categories/sub_categories.dart';
 import 'package:g/utils/constants/image_strings.dart';
+import 'package:get/get.dart';
 
 class GHomeCategories extends StatelessWidget {
   const GHomeCategories({
@@ -19,7 +21,7 @@ class GHomeCategories extends StatelessWidget {
           return GVerticalImageText(
             image: GImages.oxyIcon,
             title: 'Oxy',
-            onTap: () {},
+            onTap: () =>Get.to(()=>const SubCategoriesScreen()),
           );
         },
       ),

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
-import 'package:g/common/widgets/custom_shapes/container/rounded_container.dart';
 import 'package:g/features/presonalization/screens/address/add_new_address.dart';
 import 'package:g/features/presonalization/screens/address/single_address.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/sizes.dart';
-import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({super.key});

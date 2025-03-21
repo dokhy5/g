@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:g/utils/helpers/helper_functions.dart';
 
 class GCircularIcon extends StatelessWidget {
   const GCircularIcon({

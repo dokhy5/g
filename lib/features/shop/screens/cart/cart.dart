@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
-import 'package:g/common/widgets/products/cart/cart_item.dart';
-import 'package:g/common/widgets/products/cart/product_quantity_with_add_remove_button.dart';
-import 'package:g/common/widgets/text/product_price_text.dart';
 import 'package:g/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:g/features/shop/screens/checkout/checkout.dart';
 import 'package:g/utils/constants/sizes.dart';

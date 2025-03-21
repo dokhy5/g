@@ -85,7 +85,7 @@ class GProductCardVertical extends StatelessWidget {
                 children: [
                   GProductTitleText(
                     title: '2.5kاوكسي بالمندرين',
-                    smallSize: true,
+                    smallSize: false,
                   ),
                   SizedBox(height: GSizes.spaceBtwItems / 2),
                   
