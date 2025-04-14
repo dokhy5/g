@@ -27,7 +27,7 @@ class SignupScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: GSizes.spaceBtwSections),
-              GSignupFrom(),
+              GSignupForm(),
               const SizedBox(height: GSizes.spaceBtwSections),
               GFromDivider(dividerText: GText.orSignUpWith.capitalize!),
               const SizedBox(height: GSizes.spaceBtwSections),

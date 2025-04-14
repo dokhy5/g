@@ -6,8 +6,10 @@ import 'package:g/common/widgets/loyouts/grid_loyout.dart';
 import 'package:g/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:g/common/widgets/brands/brand_card.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
+import 'package:g/features/shop/all_brands/all_brands.dart';
 import 'package:g/features/shop/screens/store/widgets/category_tap.dart';
 import 'package:g/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -52,14 +54,19 @@ class StoreScreen extends StatelessWidget {
                           GSectionHeading(
                             title: 'العلامات التجارية المميزة',
                             showActionButton: true,
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => AllBrandsScreen()),
                           ),
                           const SizedBox(height: GSizes.spaceBtwItems / 1.5),
-                          GGridLoyout(
-                            itemCount: 4,
-                            mainAxisExtent: 80,
-                            itemBuilder: (_, index) =>
-                                GBrandCard(showBorder: true),
+                          Directionality(
+                                  textDirection: TextDirection.ltr, 
+
+
+                            child: GGridLoyout(
+                              itemCount: 4,
+                              mainAxisExtent: 80,
+                              itemBuilder: (_, index) =>
+                                  GBrandCard(showBorder: true),
+                            ),
                           ),
                         ],
                       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:g/common/styles/shadows.dart';
 import 'package:g/common/widgets/custom_shapes/container/rounded_container.dart';
 import 'package:g/common/widgets/icons/circular_icon.dart';
 import 'package:g/common/widgets/images/rounded_image.dart';

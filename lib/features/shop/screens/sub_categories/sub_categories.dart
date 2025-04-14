@@ -3,8 +3,10 @@ import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/images/rounded_image.dart';
 import 'package:g/common/widgets/products/pruduct_cards/pruduct_card_horizontal.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
+import 'package:g/features/shop/screens/all_products/all_products.dart';
 import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class SubCategoriesScreen extends StatelessWidget {
   const SubCategoriesScreen({super.key});
@@ -34,7 +36,7 @@ class SubCategoriesScreen extends StatelessWidget {
                   children: [
                     GSectionHeading(
                       title: 'اوكسي جيل',
-                      onPressed: () {},
+                      onPressed: ()=> Get.to(()=> AllProductsScreen()),
                     ),
                     const SizedBox(height: GSizes.spaceBtwItems / 2),
                     SizedBox(

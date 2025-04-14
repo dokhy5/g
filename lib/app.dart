@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:g/bindings/general_bindings.dart';
 import 'package:g/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/themes/themes.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +18,8 @@ class App extends StatelessWidget {
       theme: GAppThemes.lightTheme,
       darkTheme: GAppThemes.darkTheme,
       debugShowCheckedModeBanner: false,
-      home: const OnboardingScreen(),
+      initialBinding: GeneralBindings(),
+      home: const Scaffold(backgroundColor: GColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white,),)),
 
     );
   }

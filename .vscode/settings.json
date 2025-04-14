@@ -5,5 +5,6 @@
     "todo-tree.tree.flat": true,
     "todo-tree.tree.groupedBySubTag": true,
     "todo-tree.tree.groupedByTag": true,
-    "todo-tree.tree.hideIconsWhenGroupedByTag": true
+    "todo-tree.tree.hideIconsWhenGroupedByTag": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
