@@ -3,7 +3,7 @@ import 'package:g/utils/formatters/formatter.dart';
 
 class UserModel {
   final String id;
-  String fristName;
+  String firstName;
   String lastName;
   final String userName;
   final String email;
@@ -11,7 +11,7 @@ class UserModel {
   String profilePicture;
   UserModel({
     required this.id,
-    required this.fristName,
+    required this.firstName,
     required this.lastName,
     required this.userName,
     required this.email,
@@ -19,21 +19,21 @@ class UserModel {
     required this.profilePicture,
   });
 
-  String get fullName => '$fristName $lastName';
+  String get fullName => '$firstName $lastName';
   String get formattedPhoneNo => GFormatter.formatPhoneNumber(phoneNumber);
   static List<String> nameParts(fullName) => fullName.split(' ');
   static String generateUsername(fullName) {
     List<String> namePart = fullName.split(' ');
-    String fristName = namePart[0].toLowerCase();
+    String firstName = namePart[0].toLowerCase();
     String lastName = namePart.length > 1 ? namePart[1].toLowerCase() : '';
-    String camelCaseUsename = '$fristName$lastName';
+    String camelCaseUsename = '$firstName$lastName';
     String usreNameWithPrefix = 'cwt_$camelCaseUsename';
     return usreNameWithPrefix;
   }
 
   static UserModel empty() => UserModel(
     id: '',
-    fristName: '',
+    firstName: '',
     lastName: '',
     userName: '',
     email: '',
@@ -43,7 +43,7 @@ class UserModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'fristName': fristName,
+      'fristName': firstName,
       'lastName': lastName,
       'userName': userName,
       'email': email,
@@ -53,11 +53,13 @@ class UserModel {
   }
 
   factory UserModel.fromSnapshot(DocumentSnapshot <Map<String, dynamic>> document) {
+      print('📄 Firestore data: ${document.data()}'); // ✅ اطبع البيانات الأول
+
     if (document.data()!=null) {
       final data = document.data()!;
       return UserModel(
         id: document.id,
-        fristName: data['fristName'] ?? '',
+        firstName: data['firstName'] ?? '',
         lastName: data['lastName'] ?? '',
         userName: data['userName'] ?? '',
         email: data['email'] ?? '',

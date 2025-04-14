@@ -27,9 +27,16 @@ class SignupController extends GetxController {
         GImages.google,
       );
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
 
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!isConnected) {
+        GFullScreenLoader.stopLoading();
+        return;
+      }
+
+      if (!signupFormKey.currentState!.validate()) {
+        GFullScreenLoader.stopLoading();
+        return;
+      }
 
       if (!privacyPolicy.value) {
         GLoaders.warningSnackBar(
@@ -39,28 +46,30 @@ class SignupController extends GetxController {
         );
         return;
       }
-      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(
-        email.text.trim(),
-        password.text.trim(),
-      );
+      final userCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+            email.text.trim(),
+            password.text.trim(),
+          );
       final newUser = UserModel(
         id: userCredential.user!.uid,
-        fristName: firstName.text.trim(),
+        firstName: firstName.text.trim(),
         lastName: lastName.text.trim(),
         userName: userName.text.trim(),
         email: email.text.trim(),
         phoneNumber: phoneNumber.text.trim(),
         profilePicture: '',
       );
-      final userRepository =Get.put(UserRepository());
+      final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
       GFullScreenLoader.stopLoading();
-      GLoaders.successSnackBar(title: 'Congratulations!', message: 'You account has been created! Verify email to continue');
-      Get.to(()=>const VerifyEmailScreen());
+      GLoaders.successSnackBar(
+        title: 'Congratulations!',
+        message: 'You account has been created! Verify email to continue',
+      );
+      Get.to(() =>  VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       GLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
-      GFullScreenLoader.stopLoading();
-    }
+    } 
   }
 }

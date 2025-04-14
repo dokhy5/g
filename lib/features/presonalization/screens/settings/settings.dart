@@ -4,6 +4,7 @@ import 'package:g/common/widgets/custom_shapes/container/primary_header_containe
 import 'package:g/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:g/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
+import 'package:g/data/repositories/authentication/authentication_repository.dart';
 import 'package:g/features/presonalization/screens/address/address.dart';
 import 'package:g/features/presonalization/screens/profile/profile.dart';
 import 'package:g/features/shop/screens/cart/cart.dart';
@@ -124,7 +125,7 @@ class SettingsScreen extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                         side: BorderSide(color: dark ? GColors.white : GColors.black),
                       ),
-                      onPressed: () {},
+                      onPressed: () =>AuthenticationRepository.instance.logout(),
                       child: Text(
                         GText.logout,
                         style: TextStyle(color: dark ? GColors.white : GColors.black),

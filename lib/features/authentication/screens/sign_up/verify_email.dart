@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/success_screen/success_screen.dart';
+import 'package:g/data/repositories/authentication/authentication_repository.dart';
+import 'package:g/features/authentication/controllers/sign_up/verify_email_conttraller.dart';
 import 'package:g/features/authentication/screens/login/login.dart';
 import 'package:g/utils/constants/colors.dart' show GColors;
 import 'package:g/utils/constants/image_strings.dart';
@@ -10,10 +12,11 @@ import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
-
+  const VerifyEmailScreen({super.key,  this.email});
+final String? email;
   @override
   Widget build(BuildContext context) {
+  final controller= Get.put(VerifyEmailController());
     final dark = GHelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -21,7 +24,7 @@ class VerifyEmailScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(LoginScreen()),
+            onPressed: () => AuthenticationRepository.instance.logout(),
             icon: const Icon(CupertinoIcons.clear),
           ),
         ],
@@ -46,7 +49,7 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               const SizedBox(height: GSizes.spaceBtwItems),
               Text(
-                'support@Gomla.com',
+                email??'',
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
@@ -62,14 +65,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed:
-                      () => Get.to(
-                        () => SuccessScreen(
-                          image: GImages.onBoardingImage1,
-                          title: GText.yourAccountIsCreated,
-                          subtTitle: GText.yourAccountIsCreatedSubTitle,
-                          onPressed: () => Get.to(() => LoginScreen()),
-                        ),
-                      ),
+                      () => controller.checkEmailVerification(),
                   child: Text(GText.gContinue),
                 ),
               ),
@@ -77,7 +73,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: ()=> controller.sendEmailverification(),
                   child: Text(
                     GText.resendEmail,
                     style: TextStyle(
