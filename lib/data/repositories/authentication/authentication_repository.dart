@@ -12,6 +12,7 @@ import 'package:g/utils/exceptions/format_exceptions.dart';
 import 'package:g/utils/exceptions/platform_exceptions.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -44,6 +45,24 @@ class AuthenticationRepository extends GetxController {
 
   }
 
+    Future<UserCredential> loginWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again later';
+    }
+    }
+
   Future<UserCredential> registerWithEmailAndPassword(
       String email, String password) async {
     try {
@@ -61,6 +80,8 @@ class AuthenticationRepository extends GetxController {
       throw 'Something went wrong. Please try again later';
     }
   }
+
+
   Future<void> sendEmailverification() async {
     try {
       await _auth.currentUser!.sendEmailVerification( );
@@ -74,6 +95,42 @@ class AuthenticationRepository extends GetxController {
       throw GPlatformExceptions(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again later';
+    }
+  }
+
+    Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again later';
+    }
+  }
+
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =await googleUser?.authentication;
+      final  credentials = GoogleAuthProvider.credential(accessToken: googleAuth?.accessToken,idToken: googleAuth?.idToken,);
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformExceptions(e.code).message;
+    } catch (e) {
+      if (kDebugMode)print('Something went wrong. $e');
+      return null;
     }
   }
   Future<void> logout() async {

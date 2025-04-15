@@ -3,7 +3,6 @@ import 'package:g/common/widgets/loaders/animation_loader.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 
 class GFullScreenLoader {
   static void openLoadingDialog(String text ,String animation){
