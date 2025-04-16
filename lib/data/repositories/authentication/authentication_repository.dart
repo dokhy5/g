@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:g/data/repositories/user/user_repository.dart';
 import 'package:g/features/authentication/screens/login/login.dart';
 import 'package:g/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:g/features/authentication/screens/sign_up/verify_email.dart';
@@ -18,6 +19,7 @@ class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
   final deviceStorage = GetStorage();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? get authUser=>_auth.currentUser;
 
   @override
   void onReady() {
@@ -114,6 +116,23 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+      Future<void> reAuthenticationEmailAndPasswordUser(String email, String password) async {
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again later';
+    }
+  }
+
   Future<UserCredential?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -149,4 +168,23 @@ class AuthenticationRepository extends GetxController {
       throw 'Something went wrong. Please try again later';
     }
   }
-}
+
+  
+  
+    Future<void> deleteAccount() async {
+      try {
+        await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+        await _auth.currentUser!.delete();
+      } on FirebaseAuthException catch (e) {
+        throw GFirebaseAuthException(e.code).message;
+      } on FirebaseException catch (e) {
+        throw GFirebaseException(e.code).message;
+      } on FormatException catch (_) {
+        throw GFormatException();
+      } on PlatformException catch (e) {
+        throw GPlatformExceptions(e.code).message;
+      } catch (e) {
+        throw 'Something went wrong. Please try again later';
+      }
+    }
+  }

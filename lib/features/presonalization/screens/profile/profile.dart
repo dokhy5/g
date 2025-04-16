@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/images/circular_image.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
+import 'package:g/data/repositories/user/user_repository.dart';
+import 'package:g/features/presonalization/controllers/user_controller.dart';
+import 'package:g/features/presonalization/screens/profile/widgets/change_name.dart';
 import 'package:g/features/presonalization/screens/profile/widgets/profile_menu.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller= UserController.instance;
     final dark = GHelperFunctions.isDarkMode(context);
     return Directionality(
       textDirection: TextDirection.rtl, // تغيير الاتجاه إلى اليمين
@@ -46,12 +51,12 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: GSizes.spaceBtwItems),
                 GProfileMenu(
                   title: 'الاسم',
-                  value: 'محمد أيمن',
-                  onPressed: () {},
+                  value: controller.user.value.fullName,  
+                  onPressed: ()=>Get.to(()=>const ChangeName()),
                 ),
                 GProfileMenu(
                   title: 'اسم المستخدم',
-                  value: 'M.dokhy5',
+                  value: controller.user.value.userName,
                   onPressed: () {},
                 ),
                 const GSectionHeading(title: 'المعلومات الشخصية', showActionButton: false),
@@ -60,18 +65,18 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: GSizes.spaceBtwItems),
                 GProfileMenu(
                   title: 'معرف المستخدم',
-                  value: '455677',
+                  value: controller.user.value.id,
                   icon: Iconsax.copy,
                   onPressed: () {},
                 ),
                 GProfileMenu(
                   title: 'البريد الإلكتروني',
-                  value: 'mohamed.aymen@gmail.com',
+                  value: controller.user.value.email,
                   onPressed: () {},
                 ),
                 GProfileMenu(
                   title: 'رقم الهاتف',
-                  value: '+0123456789',
+                  value: controller.user.value.phoneNumber,
                   onPressed: () {},
                 ),
                 GProfileMenu(
@@ -88,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: GSizes.spaceBtwItems),
                 Center(
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => controller.deletAccountWarrningPopup(),
                     child: const Text(
                       'إغلاق الحساب',
                       style: TextStyle(color: Colors.red),
