@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/products/cart/cart_menu_icon.dart';
-import 'package:g/common/widgets/shimmer_effect/shimmer_effect.dart';
+import 'package:g/common/widgets/shimmer/shimmer_effect.dart';
 import 'package:g/features/presonalization/controllers/user_controller.dart';
 import 'package:g/utils/constants/colors.dart';
 import 'package:g/utils/constants/text_strings.dart';

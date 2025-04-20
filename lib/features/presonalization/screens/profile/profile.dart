@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/images/circular_image.dart';
-import 'package:g/common/widgets/shimmer_effect/shimmer_effect.dart';
+import 'package:g/common/widgets/shimmer/shimmer_effect.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
 import 'package:g/features/presonalization/controllers/user_controller.dart';
 import 'package:g/features/presonalization/screens/profile/widgets/change_name.dart';

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:g/common/widgets/shimmer_effect/shimmer_effect.dart';
+import 'package:g/common/widgets/shimmer/shimmer_effect.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';

@@ -6,7 +6,8 @@ import 'package:g/common/widgets/loyouts/grid_loyout.dart';
 import 'package:g/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:g/common/widgets/brands/brand_card.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
-import 'package:g/features/shop/all_brands/all_brands.dart';
+import 'package:g/features/shop/screens/all_brands/all_brands.dart';
+import 'package:g/features/shop/controllers/category_controller.dart';
 import 'package:g/features/shop/screens/store/widgets/category_tap.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -16,10 +17,11 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories=CategoryController.instance.feauturedCategories;
     return Directionality(
       textDirection: TextDirection.rtl, // تعيين الاتجاه من اليمين إلى اليسار
       child: DefaultTabController(
-        length: 9,
+        length: categories.length,
         child: Scaffold(
           appBar: GAppbar(
             title: Text(
@@ -75,24 +77,29 @@ class StoreScreen extends StatelessWidget {
                   bottom: PreferredSize(
                     preferredSize: const Size.fromHeight(50),
                     child: GTopbar(
-                      tabs: const [
-                        Tab(child: Text('مساحيق')),
-                        Tab(child: Text('صابون')),
-                        Tab(child: Text('شامبو')),
-                        Tab(child: Text('شاور')),
-                        Tab(child: Text('كريمات')),
-                        Tab(child: Text('زيوت')),
-                        Tab(child: Text('مناديل')),
-                        Tab(child: Text('مزيل عرق')),
-                        Tab(child: Text('أخرى')),
-                      ],
+                       tabs: categories.map((category) => Tab(text: category.name)).toList(),
+                      //const [
+                      //   Tab(child: Text('مساحيق')),
+                      //   Tab(child: Text('صابون')),
+                      //   Tab(child: Text('شامبو')),
+                      //   Tab(child: Text('شاور')),
+                      //   Tab(child: Text('كريمات')),
+                      //   Tab(child: Text('زيوت')),
+                      //   Tab(child: Text('مناديل')),
+                      //   Tab(child: Text('مزيل عرق')),
+                      //   Tab(child: Text('أخرى')),
+                      // ],
                     ),
                   ),
                 ),
               ];
             },
             body: TabBarView(
-              children: List.generate(9, (_) => GCategoryTap()),
+              children: categories.map((category) {
+                return GCategoryTap(
+                  category: category,
+                );
+              }).toList(),
             ),
           ),
         ),

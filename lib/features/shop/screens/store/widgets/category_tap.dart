@@ -3,13 +3,15 @@ import 'package:g/common/widgets/brands/brand_showcase.dart';
 import 'package:g/common/widgets/loyouts/grid_loyout.dart';
 import 'package:g/common/widgets/products/pruduct_cards/pruduct_card_vertical.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
+import 'package:g/features/shop/models/category_model.dart';
 import 'package:g/features/shop/screens/all_products/all_products.dart';
 import 'package:g/utils/constants/image_strings.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 class GCategoryTap extends StatelessWidget {
-  const GCategoryTap({super.key});
+  const GCategoryTap({super.key, required this.category});
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

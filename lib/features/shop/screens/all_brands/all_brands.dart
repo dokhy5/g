@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/brands/brand_card.dart';
 import 'package:g/common/widgets/loyouts/grid_loyout.dart';
-import 'package:g/features/shop/all_brands/brand_product.dart';
+import 'package:g/features/shop/screens/all_brands/brand_product.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
