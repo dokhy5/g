@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:g/common/widgets/shimmer_effect/shimmer_effect.dart';
 import 'package:g/utils/constants/sizes.dart';
 import 'package:g/utils/helpers/helper_functions.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:shimmer/shimmer.dart';
 
 class GCircularImage extends StatelessWidget {
   const GCircularImage({
@@ -11,7 +15,7 @@ class GCircularImage extends StatelessWidget {
     this.backgroundColor,
     this.width = 56,
     this.height = 56,
-    this.padding = GSizes.sm,
+    this.padding = GSizes.sm, this.overlayColor,
   });
 
   final BoxFit? fit;
@@ -19,6 +23,8 @@ class GCircularImage extends StatelessWidget {
   final bool isNetworkImage;
   final Color? backgroundColor;
   final double width, height, padding;
+      final Color? overlayColor;
+
   @override
   Widget build(BuildContext context) {
     final dark = GHelperFunctions.isDarkMode(context);
@@ -30,13 +36,23 @@ class GCircularImage extends StatelessWidget {
         color: backgroundColor ?? (dark ? Colors.black : Colors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Center(
-        child: Image(
-          fit: fit,
-          image:
-              isNetworkImage
-                  ? NetworkImage(image)
-                  : AssetImage(image) as ImageProvider,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
+          ?CachedNetworkImage(imageUrl: image,
+          fit:fit,
+          color:  overlayColor,
+          progressIndicatorBuilder: (context, url, downloadProgress) => const GShimmerEffect(width: 55,hight: 55,radius: 55,),
+          errorWidget: (context, url, error) => const Icon(Icons.error ,),
+          )
+          
+          :Image(
+            fit: fit,
+            image: AssetImage(image),
+                
+                    color: overlayColor,
+          ),
         ),
       ),
     );

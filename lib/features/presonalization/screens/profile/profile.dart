@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:g/common/widgets/appbar/appbar.dart';
 import 'package:g/common/widgets/images/circular_image.dart';
+import 'package:g/common/widgets/shimmer_effect/shimmer_effect.dart';
 import 'package:g/common/widgets/text/section_heading.dart';
-import 'package:g/data/repositories/user/user_repository.dart';
 import 'package:g/features/presonalization/controllers/user_controller.dart';
 import 'package:g/features/presonalization/screens/profile/widgets/change_name.dart';
 import 'package:g/features/presonalization/screens/profile/widgets/profile_menu.dart';
@@ -33,9 +33,14 @@ class ProfileScreen extends StatelessWidget {
                   width: double.infinity,
                   child: Column(
                     children: [
-                      GCircularImage(image: GImages.user, width: 80, height: 80),
+                      Obx(() {
+                      final networkImage=controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ?  networkImage:GImages.user;
+                      return controller.imageUploading.value
+                      ? const GShimmerEffect(width: 80,hight: 80,radius: 80,)
+                      : GCircularImage(image: image, width: 80, height: 80,isNetworkImage: networkImage.isNotEmpty,);}),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: Text(
                           'تغيير صورة الملف الشخصي',
                           style: TextStyle(color: dark ? GColors.white : GColors.black),

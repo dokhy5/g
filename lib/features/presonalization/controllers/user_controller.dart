@@ -11,15 +11,17 @@ import 'package:g/utils/helpers/network_manger.dart';
 import 'package:g/utils/popups/full_screen_loader.dart';
 import 'package:g/utils/popups/loaders.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
   final userRepository = Get.put(UserRepository());
   final ProfilLodding = false.obs;
+  final imageUploading =false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
-  final hidePassword=false.obs;
+  final hidePassword = false.obs;
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
   @override
@@ -27,36 +29,41 @@ class UserController extends GetxController {
     super.onInit();
     fetchUserRecod();
   }
+
   Future<void> fetchUserRecod() async {
     try {
-      ProfilLodding.value=true;
+      ProfilLodding.value = true;
       final user = await userRepository.fatchUserDetails();
       this.user(user);
     } catch (e) {
       user(UserModel.empty());
-    }finally{
-    ProfilLodding.value=false;
+    } finally {
+      ProfilLodding.value = false;
     }
   }
+
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final nameParts = UserModel.nameParts(
-          userCredentials.user!.displayName ?? '',
-        );
-        final userName = UserModel.generateUsername(
-          userCredentials.user!.displayName ?? '',
-        );
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(''): '',
-          userName: userName,
-          email: userCredentials.user!.email??'',
-          phoneNumber: userCredentials.user!.phoneNumber??'',
-          profilePicture: userCredentials.user!.photoURL??'',
-        );
-        await UserRepository.instance.saveUserRecord(user);
+      await fetchUserRecod();
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final nameParts = UserModel.nameParts(
+            userCredentials.user!.displayName ?? '',
+          );
+          final userName = UserModel.generateUsername(
+            userCredentials.user!.displayName ?? '',
+          );
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName: nameParts.length > 1 ? nameParts.sublist(1).join('') : '',
+            userName: userName,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
+          await UserRepository.instance.saveUserRecord(user);
+        }
       }
     } catch (e) {
       GLoaders.warningSnackBar(
@@ -66,17 +73,16 @@ class UserController extends GetxController {
       );
     }
   }
-  void deletAccountWarrningPopup(){
+
+  void deletAccountWarrningPopup() {
     Get.defaultDialog(
       contentPadding: EdgeInsets.all(GSizes.md),
       title: 'Delete Account',
-      middleText: 'Are you sure you want to delete your account? This action is not reversible and all your data will be permanently deleted.',
+      middleText:
+          'Are you sure you want to delete your account? This action is not reversible and all your data will be permanently deleted.',
       confirm: ElevatedButton(
-        onPressed: () async =>deletUserAccunt(),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.red,
-        
-        ),
+        onPressed: () async => deletUserAccunt(),
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: GSizes.lg),
           child: const Text('Delete'),
@@ -88,27 +94,30 @@ class UserController extends GetxController {
       ),
     );
   }
-  void deletUserAccunt() async{
+
+  void deletUserAccunt() async {
     try {
       // GFullScreenLoader.openLoadingDialog('Processing your request ...', GImages.onBoardingImage1);
-      final auth=AuthenticationRepository.instance;
-      final provider=auth.authUser!.providerData.map((e)=>e.providerId).first;
-      if(provider.isNotEmpty){
-        if(provider=='google.com'){
-        await auth.signInWithGoogle();
-        await auth.deleteAccount();
-        // GFullScreenLoader.stopLoading();
-        Get.offAll(()=>const LoginScreen());
-        }else if(provider=='password'){
+      final auth = AuthenticationRepository.instance;
+      final provider =
+          auth.authUser!.providerData.map((e) => e.providerId).first;
+      if (provider.isNotEmpty) {
+        if (provider == 'google.com') {
+          await auth.signInWithGoogle();
+          await auth.deleteAccount();
           // GFullScreenLoader.stopLoading();
-          Get.offAll(()=>const ReAuthLoginForm());
-          }
+          Get.offAll(() => const LoginScreen());
+        } else if (provider == 'password') {
+          // GFullScreenLoader.stopLoading();
+          Get.offAll(() => const ReAuthLoginForm());
+        }
+      }
+    } catch (e) {
+      // GFullScreenLoader.stopLoading();
+      GLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
-  }catch(e){
-    // GFullScreenLoader.stopLoading();
-    GLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
   }
-}
+
   void reAuthenticationEmailAndPasswordUser() async {
     try {
       // GFullScreenLoader.openLoadingDialog('Processing ...', GImages.onBoardingImage1);
@@ -121,13 +130,37 @@ class UserController extends GetxController {
         // GFullScreenLoader.stopLoading();
         return;
       }
-      await AuthenticationRepository.instance.reAuthenticationEmailAndPasswordUser(verifyEmail.text.trim(), verifyPassword.text.trim());
+      await AuthenticationRepository.instance
+          .reAuthenticationEmailAndPasswordUser(
+            verifyEmail.text.trim(),
+            verifyPassword.text.trim(),
+          );
       await AuthenticationRepository.instance.deleteAccount();
       // GFullScreenLoader.stopLoading();
-     Get.offAll(()=>const LoginScreen());
+      Get.offAll(() => const LoginScreen());
     } catch (e) {
       // GFullScreenLoader.stopLoading();
       GLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
+
+void uploadUserProfilePicture() async {
+  try{final image = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: 70,maxHeight: 512,maxWidth: 512);
+  if (image != null) {
+    imageUploading.value=true;
+    final imageUrl = await userRepository.uploadImage('Users/Images/Profile', image);
+    Map<String,dynamic> json = {'profilePicture': imageUrl};
+    await userRepository.updateSingelField(json);
+    user.value.profilePicture = imageUrl;
+    user.refresh();
+    GLoaders.successSnackBar(
+      title: ' تهانيتا',
+      message: 'تم تحميل صورة الملف الشخصي بنجاح',
+    );
+  }}catch(e){
+    GLoaders.errorSnackBar(title: 'خطأ', message:'حدث خطأ في تحميل الصورة');
+  }finally{
+    imageUploading.value=false;
+  }
+}
 }
